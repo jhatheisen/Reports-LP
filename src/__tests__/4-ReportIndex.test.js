@@ -1,11 +1,10 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import ReportIndex from '../components/ReportIndex';
-import ReportIndexItem from '../components/ReportIndexItem'
-// import { fetchReports } from '../store/reports';
+import { getAllReports } from '../store/reports';
+import ReportIndexItem from '../components/ReportIndexItem';
 import reports from './mockData/mockReports.json';
 
 /* jest globals */
@@ -15,10 +14,6 @@ jest.mock('react-redux', () => ({
   useDispatch: jest.fn()
 }));
 
-// jest.mock('../store/reports', () => ({
-//   fetchReports: jest.fn()
-// }));
-
 // Mock ReportIndexItem
 jest.mock('../components/ReportIndexItem', () => {
   return {
@@ -27,12 +22,17 @@ jest.mock('../components/ReportIndexItem', () => {
   }
 });
 
+jest.mock('../store/reports', () => ({
+  getAllReports: jest.fn()
+}));
+
 describe('ReportIndex', () => {
-  let testStore;
+  let testReports;
   
   beforeEach(() => {
-    testStore = { reports };
-    useSelector.mockImplementation(callback => callback(testStore));
+    testReports = [reports[1], reports[2], reports[3], reports[4], reports[5]];
+    getAllReports.mockImplementation(() => testReports);
+    useSelector.mockImplementation(callback => callback());
     ReportIndexItem.mockImplementation(() => <li>ReportIndexItem</li>);
   });
 
@@ -40,17 +40,16 @@ describe('ReportIndex', () => {
     const { rerender } = render(<ReportIndex />, { wrapper: MemoryRouter });
     const reportIndexItems = screen.getAllByRole('listitem');
     expect(reportIndexItems.length).toBe(5);
-    expect(ReportIndexItem.mock.calls[0][0]).toEqual({ report: reports[1] })
-    expect(ReportIndexItem.mock.calls[4][0]).toEqual({ report: reports[5] })
+    expect(ReportIndexItem.mock.calls[0][0]).toEqual({ report: reports[1] });
+    expect(ReportIndexItem.mock.calls[4][0]).toEqual({ report: reports[5] });
     
-    ReportIndexItem.mockClear();
-
     // Render again with a different number of reports
-    testStore.reports = { ...testStore.reports, "6": { id: 6 }};
+    ReportIndexItem.mockClear();
+    getAllReports.mockImplementation(() => [...testReports, { id: 6 }]);
     rerender(<ReportIndex />);
     const newReportIndexItems = screen.getAllByRole('listitem');
     expect(newReportIndexItems.length).toBe(6);
-    expect(ReportIndexItem.mock.calls[5][0].report).toEqual(testStore.reports[6])
+    expect(ReportIndexItem.mock.calls[5][0].report).toEqual({ id: 6 });
   });
 
   it('should display a link to the "New Report" page', () => {

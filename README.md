@@ -2,11 +2,12 @@
 
 **You will have 1.5 hours for this assessment.**
 
-Read this entire README before running specs for the first time; it
-contains important information about running tests with jest.
+Read this entire README before running specs for the first time; it contains
+important information about running tests with Jest.
 
-You will be creating a self-reflection report app called Progress Tracker Lite. This
-application will allow for the creation, display, updating, and deletion of reports.
+You will be creating a self-reflection report app called Progress Tracker Lite.
+This application will allow for the creation, display, updating, and deletion of
+reports.
 
 ## Design Documents
 
@@ -32,8 +33,7 @@ If any step of the setup fails, ask an instructor for help.
 
 To test your code live in the browser, run:
 
-1. `npm start` runs your app in watch mode so it will update with
-   changes.
+1. `npm start` runs your app in watch mode so it will update with changes.
 2. Navigate to `localhost:3000`.  
 
 ## Your task
@@ -48,12 +48,12 @@ pretty display. Functionality is all you need to worry about in this assessment.
 
 ## Running specs
 
-You will be testing your code using Jest. Navigate to the __reports__ folder of
-the skeleton and run `npm test`. This will enter watch mode, which will start
-watching your files for changes and run all the test specs whenever your files
-change. To run your tests initially rather than waiting for a file change you
-may use the 'a' command, as outlined in the menu of options for running tests
-manually. To exit watch mode, type 'q' (or '^c').
+You will be testing your code using Jest with React Testing Library. Navigate to
+the __reports__ folder of the skeleton and run `npm test`. This will enter watch
+mode, which will start watching your files for changes and run all the test
+specs whenever your files change. To run your tests initially rather than
+waiting for a file change you may use the 'a' command, as outlined in the menu
+of options for running tests manually. To exit watch mode, type 'q' (or '^c').
 
 See the 'Debugging Tips' section below for information on how to run a single
 spec file.
@@ -81,6 +81,12 @@ Component tests (i.e., files in the __src/components__ directory):
 6. `src/__tests__/6-ReportShow.test.js`
 7. `src/__tests__/7-ReportForm.test.js`
 
+In truth, the tests are designed so that you can complete them in any order,
+with the following exceptions:
+
+1. The reducer test (2) relies on the constants in the actions test (1).
+2. The store test (3) should be completed after the reducer test (2).
+
 ## Debugging tips
 
 Jest is Facebook's de facto testing framework for React components. Here are
@@ -105,13 +111,12 @@ some tips for making debugging a little less intimidating.
   (You will have to specify a little bit more for any number that also appears
   in the full path for the test files.)
 
-3. Examine the test files to see the expected behavior. (Jest reads similarly to
-   RSpec.)
+3. Examine the test files to see the expected behavior.
 
 4. If you want to see the output from `console.log`s during the tests, remove
-   the `--silent` option from the `test` script in the __reports__ folder's
-   __package.json__. Once you've made the change, exit out of any
-   testing watch mode and run `npm test` again to start the new script.
+   the `--silent` option from the `test` script in __reports/package.json__.
+   Once you've made the change, exit out of any testing watch mode and run `npm
+   test` again to start the new script.
 
 ## Submission
 

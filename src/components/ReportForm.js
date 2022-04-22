@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { receiveReport, getReport } from '../store/reports';
-
 /*
 Export a `ReportForm` component that renders a form to either create or edit a
 report. The form should determine whether it is a create or edit form based on

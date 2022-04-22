@@ -1,6 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import reportsReducer from './reports';
-
 /*
 Write a `rootReducer`. It should set up a `reports` slice of state that
 delegates to the `reportsReducer`, which has been imported for you.

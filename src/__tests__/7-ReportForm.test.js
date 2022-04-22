@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
@@ -18,14 +17,14 @@ jest.mock('react-redux', () => ({
 }));
 
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'), // use actual react-redux for non-hooks
+  ...jest.requireActual('react-router-dom'), // use actual react-router-dom for non-hooks
   useParams: jest.fn(),
   useHistory: jest.fn()
 }));
 
 jest.mock('../store/reports', () => ({
   receiveReport: jest.fn(),
-  getReport: jest.fn(),
+  getReport: jest.fn()
 }));
 
 jest.mock('nanoid', () => ({
@@ -85,12 +84,12 @@ describe('ReportForm', () => {
 
     it('should update the `understanding` field when it changes', async () => {
       await user.type(understandingInput, 'great!');
-      expect(understandingInput).toHaveValue('great!') 
+      expect(understandingInput).toHaveValue('great!');
     });
 
     it('should update the `improvement` field when it changes', async () => {
       await user.type(improvementTextarea, 'good!');
-      expect(improvementTextarea).toHaveValue('good!')
+      expect(improvementTextarea).toHaveValue('good!');
     });
 
     it('should set id correctly', async () => {
@@ -145,7 +144,7 @@ describe('ReportForm', () => {
       submitButton = screen.getByRole('button');
     });
 
-    afterEach(() => jest.clearAllMocks())
+    afterEach(() => jest.clearAllMocks());
 
     it('should contain a header with the text `Update Report`', () => {
       expect(screen.getByRole('heading')).toHaveTextContent('Update Report');
@@ -156,7 +155,7 @@ describe('ReportForm', () => {
       const {rerender} = render(<ReportForm />);
       expect(useSelector.mock.results[0].value).toEqual(testStore.reports[reportId]);
       useParams.mockReturnValue({ reportId: 3 });
-      rerender(<ReportForm />) 
+      rerender(<ReportForm />);
       expect(useSelector.mock.results[1].value).toEqual(testStore.reports[3]);
     });
 

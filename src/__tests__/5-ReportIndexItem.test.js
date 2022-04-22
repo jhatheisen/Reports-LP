@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
@@ -58,6 +57,6 @@ describe('ReportIndexItem', () => {
     expect(removeReport).toBeCalledWith(reportId);
     expect(dispatch).toBeCalledWith(
       removeReport.mock.results[0].value
-    )
+    );
   });
 });

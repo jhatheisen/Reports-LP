@@ -28,7 +28,7 @@ describe('rootReducer', () => {
     store = createStore(rootReducer);
   });
 
-  it('should be exported as a function', () => {
+  it('should be a function', () => {
     expect(typeof rootReducer).toEqual('function');
   });
 

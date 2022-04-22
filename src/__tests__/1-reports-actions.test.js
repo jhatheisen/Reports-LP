@@ -5,7 +5,6 @@ It uses a mock store created with the `redux-mock-store` package
 (https://www.npmjs.com/package/redux-mock-store).
 */
 import configureMockStore from 'redux-mock-store';
-// import { RECEIVE_REPORT, RECEIVE_REPORTS, REMOVE_REPORT } from '../store/reports';
 import * as reportsModule from '../store/reports';
 import reports from './mockData/mockReports.json';
 
@@ -52,7 +51,7 @@ describe('report actions', () => {
 
       it('should return an appropriate action', () => {
         const expectedActions = [{ type: reportsModule.RECEIVE_REPORT, report: reports[reportId] }];
-        store.dispatch(reportsModule.receiveReport(reports[reportId]))
+        store.dispatch(reportsModule.receiveReport(reports[reportId]));
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
@@ -64,7 +63,7 @@ describe('report actions', () => {
 
       it('should return an appropriate action', () => {
         const expectedActions = [{ type: reportsModule.REMOVE_REPORT, reportId }];
-        store.dispatch(reportsModule.removeReport(reportId))
+        store.dispatch(reportsModule.removeReport(reportId));
         expect(store.getActions()).toEqual(expectedActions);
       });
     });

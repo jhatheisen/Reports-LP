@@ -1,9 +1,9 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { useParams, MemoryRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ReportShow from '../components/ReportShow';
+import { getReport } from '../store/reports';
 import reports from './mockData/mockReports.json';
 
 /* jest globals */
@@ -14,18 +14,23 @@ jest.mock('react-redux', () => ({
 }));
 
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'), // use actual react-redux for non-hooks
+  ...jest.requireActual('react-router-dom'), // use actual react-router-dom for non-hooks
   useParams: jest.fn()
+}));
+
+jest.mock('../store/reports', () => ({
+  getReport: jest.fn()
 }));
 
 describe('ReportShow', () => {
   let testStore;
   // Set reportId to 1, 2, 3, or 5; 4 will fail the updatedAt test
   const reportId = 2;
-
+  
   beforeEach(() => {
     testStore = { reports };
-    useSelector.mockImplementation(callback => callback(testStore));
+    getReport.mockImplementation(id => reports[id]);
+    useSelector.mockImplementation(report => report);
     useParams.mockReturnValue({ reportId });
   });
 

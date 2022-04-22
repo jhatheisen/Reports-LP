@@ -24,8 +24,7 @@ describe('reportsReducer', () => {
   });
 
   describe('handling the RECEIVE_REPORTS action', () => {
-    let testReports,
-        action;
+    let testReports, action;
 
     beforeEach(() => {
       testReports = { 1: 'testReport1', 2: 'testReport2' };
@@ -47,8 +46,7 @@ describe('reportsReducer', () => {
   });
 
   describe('handling the RECEIVE_REPORT action', () => {
-    let testReport,
-      action;
+    let testReport, action;
 
     beforeEach(() => {
       testReport = {
@@ -81,8 +79,7 @@ describe('reportsReducer', () => {
   });
 
   describe('handling the REMOVE_REPORT action', () => {
-    let testReport,
-        action;
+    let testReport, action;
 
     beforeEach(() => {
       oldState = { 1: 'oldState', 2: 'testReport' }
