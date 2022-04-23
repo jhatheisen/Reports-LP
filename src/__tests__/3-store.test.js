@@ -18,13 +18,12 @@ Note: `react-app-rewired` requires a __config-overrides.js__ file in the root
 directory (present but empty in this project). 
 */
 import reportsReducer, { RECEIVE_REPORT } from '../store/reports';
-import configureStore, { __RewireAPI__ as storeModule } from '../store';
+import configureStore, { rootReducer, __RewireAPI__ as storeModule } from '../store';
 import { createStore } from 'redux';
 
 describe('rootReducer', () => {
-  let rootReducer, store;
+  let store;
   beforeAll(() => {
-    rootReducer = storeModule.__get__('rootReducer');
     store = createStore(rootReducer);
   });
 

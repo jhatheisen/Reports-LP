@@ -14,15 +14,15 @@ let store;
 
 describe('report actions', () => {
   describe('report constants', () => {
-    it('should export a `RECEIVE_REPORTS` constant', () => {
+    it('should export a `RECEIVE_REPORTS` constant with a value of "reports/RECEIVE_REPORTS"', () => {
       expect(reportsModule.RECEIVE_REPORTS).toEqual('reports/RECEIVE_REPORTS');
     });
 
-    it('should export a `RECEIVE_REPORT` constant', () => {
+    it('should export a `RECEIVE_REPORT` constant with a value of "reports/RECEIVE_REPORT"', () => {
       expect(reportsModule.RECEIVE_REPORT).toEqual('reports/RECEIVE_REPORT');
     });
 
-    it('should export a `REMOVE_REPORT` constant', () => {
+    it('should export a `REMOVE_REPORT` constant with a value of "reports/REMOVE_REPORT"', () => {
       expect(reportsModule.REMOVE_REPORT).toEqual('reports/REMOVE_REPORT');
     });
   });
@@ -111,5 +111,4 @@ describe('report actions', () => {
       });
     });
   });
-  
 });
