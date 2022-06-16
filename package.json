@@ -15,19 +15,14 @@
     "react-scripts": "5.0.0",
     "redux": "^4.1.2"
   },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --verbose --silent",
-    "eject": "react-scripts eject"
+   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --verbose --silent",
+    "test-with-json": "SKIP_PREFLIGHT_CHECK=true CI=true react-scripts test --outputFile=./test/score.json --json; node test/calculateScore.js"
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "babel": {
-    "plugins": [
-      "babel-plugin-rewire"
-    ]
   },
   "browserslist": {
     "production": [
@@ -42,9 +37,6 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-rewire": "^1.2.0",
-    "react-app-rewired": "^2.2.1",
-    "redux-logger": "^3.0.6",
-    "redux-mock-store": "^1.5.4"
+    "redux-logger": "^3.0.6"
   }
 }
