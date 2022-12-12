@@ -12,7 +12,7 @@ Tracker Lite. This application should allow for the creation, display, updating,
 and deletion of reports.
 
 This application allows the user to perform CRUD on reports. Each report has
-five fields: `id`, `understanding`, and `improvement`.
+three fields: `id`, `understanding`, and `improvement`.
 
 When the application is refreshed, all data will be reset and no data should
 persist.
