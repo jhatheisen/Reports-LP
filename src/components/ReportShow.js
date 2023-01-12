@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 const ReportShow = () => {
   const { reportId } = useParams();
-  const report = {};
+
+  const report = useSelector(state => state.reports[reportId]);
 
   return (
     <section>
