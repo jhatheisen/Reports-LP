@@ -42,6 +42,7 @@ const initialState = {};
 initialReports.forEach(report => initialState[report.id] = report);
 
 export default function reportsReducer (state = initialState, action) {
+  Object.freeze(state)
   switch (action.type) {
     case REMOVE_REPORT: {
       const newState = {...state};
